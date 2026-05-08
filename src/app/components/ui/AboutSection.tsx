@@ -23,7 +23,7 @@ export const AboutSection = () => {
         <div className="relative h-[700px] w-full flex items-center justify-center">
           {/* Back image */}
           <motion.div style={{ y: y1 }} className="absolute left-0 top-[10%] h-[60%] w-[55%] overflow-hidden shadow-2xl">
-             <Image src="https://images.unsplash.com/photo-1550614000-4b95dd244747?q=80&w=800" alt="Model walking" fill className="object-cover" sizes="(max-width: 768px) 50vw, 33vw" />
+             <Image src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=800" alt="Model walking" fill className="object-cover" sizes="(max-width: 768px) 50vw, 33vw" />
           </motion.div>
           {/* Front overlapping image */}
           <motion.div style={{ y: y2 }} className="absolute right-0 bottom-[10%] h-[65%] w-[60%] overflow-hidden shadow-2xl z-10 border-8 border-[#f9f8f6]">

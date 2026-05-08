@@ -4,6 +4,8 @@ import { PromoBanner } from "./components/ui/PromoBanner";
 import { Hero } from "./components/ui/Hero";
 import { AboutSection } from "./components/ui/AboutSection";
 import { ClientsSection } from "./components/ui/ClientsSection";
+import { CategoriesSection } from "./components/ui/CategoriesSection";
+import { Footer } from "./components/ui/Footer";
 
 const products = [
   {
@@ -15,7 +17,7 @@ const products = [
     badge: "New",
   },
   {
-    image: "https://images.unsplash.com/photo-1614252235316-8ba7833075c3?q=80&w=800",
+    image: "https://images.unsplash.com/photo-1560343090-f0409e92791a?q=80&w=800",
     name: "Italian Leather Oxford",
     category: "Men · Footwear",
     price: "$175",
@@ -44,6 +46,8 @@ export default function Home() {
       <Hero />
       
       <ClientsSection />
+
+      <CategoriesSection />
       
       <AboutSection />
 
@@ -73,10 +77,7 @@ export default function Home() {
 
       <PromoBanner />
 
-      {/* Footer placeholder */}
-      <footer className="bg-[#0a0a0a] text-white/70 py-12 px-8 text-center text-sm" role="contentinfo">
-        <p>&copy; {new Date().getFullYear()} LUXE Shop. All rights reserved.</p>
-      </footer>
+      <Footer />
     </main>
   );
 }
