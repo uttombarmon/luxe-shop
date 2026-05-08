@@ -2,10 +2,11 @@ import { Navbar } from "./components/ui/Navbar";
 import { ProductCard } from "./components/ui/ProductCard";
 import { PromoBanner } from "./components/ui/PromoBanner";
 import { Hero } from "./components/ui/Hero";
+import { AboutSection } from "./components/ui/AboutSection";
 
 const products = [
   {
-    icon: "🧥",
+    image: "https://images.unsplash.com/photo-1591047139829-d91aecb6caea?q=80&w=800",
     name: "Cashmere Trench",
     category: "Women · Outerwear",
     price: "$289",
@@ -13,20 +14,25 @@ const products = [
     badge: "New",
   },
   {
-    icon: "👟",
-    name: "Italian Sneaker",
+    image: "https://images.unsplash.com/photo-1614252235316-8ba7833075c3?q=80&w=800",
+    name: "Italian Leather Oxford",
     category: "Men · Footwear",
     price: "$175",
   },
   {
-    icon: "👜",
+    image: "https://images.unsplash.com/photo-1584916201218-f4242ceb4809?q=80&w=800",
     name: "Structured Tote",
     category: "Women · Accessories",
     price: "$149",
     oldPrice: "$210",
     badge: "Sale",
   },
-  { icon: "🧣", name: "Silk Scarf", category: "Accessories", price: "$89" },
+  { 
+    image: "https://images.unsplash.com/photo-1522312346375-d1a52e2b99b3?q=80&w=800", 
+    name: "Classic Chronograph", 
+    category: "Accessories", 
+    price: "$289" 
+  },
 ];
 
 export default function Home() {
@@ -35,9 +41,11 @@ export default function Home() {
       <Navbar />
 
       <Hero />
+      
+      <AboutSection />
 
       {/* Product Grid */}
-      <section id="shop" className="px-8 py-24" aria-labelledby="new-arrivals-heading">
+      <section id="shop" className="px-8 py-24 max-w-7xl mx-auto" aria-labelledby="new-arrivals-heading">
         <div className="flex justify-between items-end mb-12">
           <div>
             <span className="text-[#c9a96e] text-xs font-bold tracking-widest uppercase">
@@ -46,7 +54,7 @@ export default function Home() {
             <h2 id="new-arrivals-heading" className="font-serif text-4xl mt-2">New Arrivals</h2>
           </div>
           <button 
-            className="border-b border-black pb-1 text-xs font-bold uppercase tracking-widest hover:text-[#c9a96e] hover:border-[#c9a96e] transition-all focus:outline-none focus:ring-2 focus:ring-[#c9a96e] focus:ring-offset-4"
+            className="border-b border-black pb-1 text-xs font-bold uppercase tracking-widest hover:text-[#c9a96e] hover:border-[#c9a96e] transition-all focus:outline-none focus:ring-2 focus:ring-[#c9a96e] focus:ring-offset-4 cursor-pointer"
             aria-label="View all new arrivals"
           >
             View All
