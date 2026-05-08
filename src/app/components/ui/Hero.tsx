@@ -1,11 +1,26 @@
 "use client";
-import { motion } from "motion/react";
+import { useRef } from "react";
+import { motion, useScroll, useTransform } from "motion/react";
+import Image from "next/image";
 import Link from "next/link";
 
 export const Hero = () => {
+  const containerRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start start", "end start"],
+  });
+
+  const textY = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
+  const textOpacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
+  const imageY = useTransform(scrollYProgress, [0, 1], ["0%", "20%"]);
+
   return (
-    <section className="grid lg:grid-cols-2 min-h-[90vh] bg-black relative">
-      <div className="flex flex-col justify-center px-12 py-20 text-white z-10">
+    <section ref={containerRef} className="grid lg:grid-cols-2 min-h-[90vh] bg-black relative overflow-hidden">
+      <motion.div 
+        style={{ y: textY, opacity: textOpacity }}
+        className="flex flex-col justify-center px-12 py-20 text-white z-10"
+      >
         <motion.span
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
@@ -21,8 +36,7 @@ export const Hero = () => {
           transition={{ duration: 0.8, delay: 0.4 }}
           className="font-serif text-6xl md:text-8xl mt-6 leading-[0.9]"
         >
-          Wear Your <br />{" "}
-          <span className="text-[#c9a96e] italic">Story.</span>
+          Wear Your <br /> <span className="text-[#c9a96e] italic">Story.</span>
         </motion.h1>
 
         <motion.p
@@ -42,28 +56,42 @@ export const Hero = () => {
           className="flex gap-4 mt-10"
         >
           <Link href="#shop" aria-label="Shop All Products">
-            <button className="bg-[#c9a96e] hover:bg-[#e8d5b0] text-black px-8 py-4 font-bold uppercase text-xs tracking-widest transition-colors">
+            <button className="bg-[#c9a96e] hover:bg-[#e8d5b0] text-black px-8 py-4 font-bold uppercase text-xs tracking-widest transition-colors cursor-pointer">
               Shop All
             </button>
           </Link>
           <Link href="#lookbook" aria-label="View Lookbook">
-            <button className="border border-white/20 hover:border-[#c9a96e] text-white px-8 py-4 font-bold uppercase text-xs tracking-widest transition-colors focus:ring-2 focus:ring-[#c9a96e]">
+            <button className="border border-white/20 hover:border-[#c9a96e] text-white px-8 py-4 font-bold uppercase text-xs tracking-widest transition-colors focus:ring-2 focus:ring-[#c9a96e] cursor-pointer">
               Lookbook
             </button>
           </Link>
         </motion.div>
-      </div>
+      </motion.div>
 
-      <div className="bg-[#1a1510] relative overflow-hidden group">
-        <div className="absolute inset-0 bg-gradient-to-br from-[#c9a96e]/20 to-transparent z-0" />
-        <motion.div
-          initial={{ scale: 1.2, opacity: 0 }}
-          animate={{ scale: 1, opacity: 0.3 }}
-          transition={{ duration: 1.5, ease: "easeOut" }}
-          className="h-full w-full flex items-center justify-center text-[10rem] grayscale group-hover:grayscale-0 transition-all duration-700 relative z-10"
-          aria-hidden="true"
+      <div className="relative overflow-hidden group min-h-[50vh] lg:min-h-full">
+        <div className="absolute inset-0 bg-linear-to-br from-[#c9a96e]/20 to-transparent z-0 pointer-events-none" />
+        <motion.div 
+          style={{ y: imageY }}
+          className="absolute inset-[-10%] h-[120%] w-[120%] z-10"
         >
-          🎭
+          <motion.div
+            initial={{ scale: 1.1, opacity: 0 }}
+            animate={{ scale: 1, opacity: 0.8 }}
+            transition={{ duration: 1.5, ease: "easeOut" }}
+            className="h-full w-full flex items-center justify-center grayscale group-hover:grayscale-0 transition-all duration-700"
+            aria-hidden="true"
+          >
+            <Image
+              src={
+                "https://lh3.googleusercontent.com/aida-public/AB6AXuBf2LawzGPDpXyfGe3dQ5yzWfmEk5O_LorDPttP_wTO-RgegfDnYKn1cXoIVQiQ_P1SO5EvxsQkpqfaXrDUssw8mwsDMXXCKWmM5IO783IXmzJ9GtHECOfZTPVf0zXhGOz1uzjztkNgO5XKnNfVZnIO3mOcJmhGNBK5wZq1cXLMgPwxsITXnrXe7PpBr8_45yCQ3uqlhozH7pg4ngEawwwCfKuRUi2w0aIzrHB8lOymcFlCgogUgw_WOgcTin7u3AWAI2xjxG2QIgs"
+              }
+              alt="Western Women Stylish"
+              className="w-full h-full object-cover"
+              width={1000}
+              height={1200}
+              priority
+            />
+          </motion.div>
         </motion.div>
       </div>
     </section>
