@@ -3,6 +3,7 @@ import { ProductCard } from "./components/ui/ProductCard";
 import { PromoBanner } from "./components/ui/PromoBanner";
 import { Hero } from "./components/ui/Hero";
 import { AboutSection } from "./components/ui/AboutSection";
+import { ClientsSection } from "./components/ui/ClientsSection";
 
 const products = [
   {
@@ -41,6 +42,8 @@ export default function Home() {
       <Navbar />
 
       <Hero />
+      
+      <ClientsSection />
       
       <AboutSection />
 
